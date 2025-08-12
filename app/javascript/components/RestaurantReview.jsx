@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const RestaurantApp = ({ currentUser, message }) => {
-  const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+const RestaurantReview = ({ currentUser, message }) => {
+  const [response, setResponse] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
 
   const makeApiCall = async () => {
     const apiMessage = message || "ping";
@@ -41,7 +41,7 @@ const RestaurantApp = ({ currentUser, message }) => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     makeApiCall();
   }, []);
 
@@ -185,4 +185,4 @@ const RestaurantApp = ({ currentUser, message }) => {
   );
 };
 
-export default RestaurantApp;
+export default RestaurantReview;
