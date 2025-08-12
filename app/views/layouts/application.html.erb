@@ -31,7 +31,7 @@
         <div class="flex items-center space-x-4">
           <% if authenticated? %>
             <span class="text-gray-700">Welcome, <%= Current.user.email_address %>!</span>
-            <%= link_to "Sign out", session_path, class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors" %>
+            <%= link_to "Sign out", destroy_session_path, class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors" %>
           <% else %>
             <%= link_to "Sign in", new_session_path, class: "text-blue-600 hover:text-blue-800 font-medium transition-colors" %>
             <%= link_to "Sign up", new_user_path, class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors" %>

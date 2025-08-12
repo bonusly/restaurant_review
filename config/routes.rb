@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :users, only: [ :new, :create ]
 
+  get "sign_out", to: "sessions#destroy", as: :destroy_session
+
   # API routes
   namespace :api do
     post "test/ping", to: "test#ping"
