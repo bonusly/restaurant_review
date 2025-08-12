@@ -1,15 +1,15 @@
 FactoryBot.define do
   factory :user do
-    email { "test@example.com" }
+    email_address { "test@example.com" }
     password { "password" }
     password_confirmation { "password" }
 
     trait :with_different_email do
-      sequence(:email) { |n| "user#{n}@example.com" }
+      sequence(:email_address) { |n| "user#{n}@example.com" }
     end
 
     trait :invalid do
-      email { "invalid-email" }
+      email_address { "invalid-email" }
     end
   end
 end

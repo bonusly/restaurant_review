@@ -4,7 +4,7 @@ A minimal Rails application demonstrating the integration between Rails, React, 
 
 ## Features
 
-- **User Authentication**: Complete signup/signin functionality using Devise
+- **User Authentication**: Complete signup/signin functionality using Rails authentication generator
 - **React Integration**: React components rendered server-side via react-rails
 - **API Communication**: Simple ping/pong API to demonstrate frontend-backend communication
 - **PostgreSQL Database**: Containerized database setup with Docker Compose
@@ -98,7 +98,7 @@ This application demonstrates a complete Rails + React + API workflow:
 
 ### Authentication
 
-- Powered by Devise gem
+- Powered by Rails authentication
 - Users must be authenticated to access the main application
 - Authentication state is passed to React components as props
 
@@ -163,8 +163,6 @@ This application includes comprehensive test suites for both backend and fronten
 
 **Setup:**
 - Uses RSpec for request specs and controller testing
-- FactoryBot for test data generation
-- Devise test helpers for authentication testing
 
 **Running Backend Tests:**
 ```bash

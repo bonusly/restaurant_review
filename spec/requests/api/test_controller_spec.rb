@@ -13,12 +13,7 @@ RSpec.describe "Api::TestController", type: :request do
     context "when user is authenticated" do
       before do
         # For request specs, we need to sign in using the session
-        post user_session_path, params: {
-          user: {
-            email: user.email,
-            password: user.password
-          }
-        }
+        sign_in_user(user)
       end
 
       context "with valid 'ping' message" do
@@ -100,12 +95,7 @@ RSpec.describe "Api::TestController", type: :request do
 
   describe "HTTP method restrictions" do
     before do
-      post user_session_path, params: {
-        user: {
-          email: user.email,
-          password: user.password
-        }
-      }
+      sign_in_user(user)
     end
 
     it "only accepts POST requests to /api/test/ping" do
@@ -141,12 +131,7 @@ RSpec.describe "Api::TestController", type: :request do
 
     it "maintains authentication across requests" do
       # Sign in
-      post user_session_path, params: {
-        user: {
-          email: user.email,
-          password: user.password
-        }
-      }
+      sign_in_user(user)
 
       # First API call
       post "/api/test/ping",
@@ -166,12 +151,7 @@ RSpec.describe "Api::TestController", type: :request do
 
   describe "Parameter handling" do
     before do
-      post user_session_path, params: {
-        user: {
-          email: user.email,
-          password: user.password
-        }
-      }
+      sign_in_user(user)
     end
 
     it "handles nil message parameter" do
