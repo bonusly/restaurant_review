@@ -1,4 +1,4 @@
 <%= react_component("RestaurantReview", {
-  currentUser: current_user ? { email: current_user.email } : nil,
+  currentUser: Current.user ? { email: Current.user.email_address } : nil,
   message: @message
 }) %>
