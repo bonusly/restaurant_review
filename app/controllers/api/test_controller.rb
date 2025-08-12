@@ -1,6 +1,4 @@
 class Api::TestController < ApplicationController
-  before_action :authenticate_user!
-
   def ping
     message = params[:message]
 
