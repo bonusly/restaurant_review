@@ -42,11 +42,21 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Testing framework [https://github.com/rspec/rspec-rails]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+end
+
+group :test do
+  # Request specs and feature specs [https://github.com/teamcapybara/capybara]
+  gem "capybara"
+  gem "selenium-webdriver"
 end
 
 gem "shakapacker", "= 8.3"

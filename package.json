@@ -3,6 +3,12 @@
   "name": "app",
   "private": true,
   "version": "0.1.0",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:all": "bundle exec rspec && npm test"
+  },
   "babel": {
     "presets": [
       "./node_modules/shakapacker/package/babel/preset.js",
@@ -21,6 +27,8 @@
     "@types/webpack": "^5.28.5",
     "babel-loader": "^8.4.1",
     "compression-webpack-plugin": "^9.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react_ujs": "^3.2.1",
     "shakapacker": "8.3.0",
     "terser-webpack-plugin": "^5.3.14",
@@ -30,6 +38,12 @@
     "webpack-merge": "^5.10.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.6.1",
+    "babel-jest": "^30.0.5",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
     "webpack-dev-server": "^4.15.2"
   }
 }

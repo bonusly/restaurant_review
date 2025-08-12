@@ -15,7 +15,7 @@ A minimal Rails application demonstrating the integration between Rails, React, 
 Before running this application, make sure you have the following installed:
 
 - **Ruby** (version 3.4.5 or compatible)
-- **Rails** (version 8.0.2 or compatible)  
+- **Rails** (version 8.0.2 or compatible)
 - **Docker** and **Docker Compose**
 - **Bundler** gem
 
@@ -155,27 +155,108 @@ The application connects to PostgreSQL running in Docker:
 - Authentication required for all API endpoints
 - Error handling for malformed requests
 
-## Extension Ideas
+## Testing
 
-This minimal setup can be extended for interview assignments or projects:
+This application includes comprehensive test suites for both backend and frontend code:
 
-### Frontend Enhancements
-- Add form validation and better error handling
-- Implement loading states and user feedback
-- Create additional React components and routing
-- Add responsive design and better styling
+### Backend Testing (RSpec)
 
-### Backend Features
-- Add more complex API endpoints (CRUD operations)
-- Implement user roles and permissions
-- Add data validation and error handling
-- Create background jobs and email notifications
+**Setup:**
+- Uses RSpec for request specs and controller testing
+- FactoryBot for test data generation
+- Devise test helpers for authentication testing
 
-### Full-Stack Projects
-- Build a restaurant review system
-- Create a task management application
-- Implement a blog or CMS
-- Add real-time features with ActionCable
+**Running Backend Tests:**
+```bash
+# Run all RSpec tests
+bundle exec rspec
+
+# Run specific test file
+bundle exec rspec spec/requests/api/test_controller_spec.rb
+
+# Run with documentation format
+bundle exec rspec --format documentation
+```
+
+**Test Coverage:**
+- API endpoint testing (`POST /api/test/ping`)
+- Authentication flow testing
+- Request/response validation
+- Error handling scenarios
+- HTTP method restrictions
+- Parameter validation
+
+### Frontend Testing (Jest + Testing Library)
+
+**Setup:**
+- Jest as the test runner
+- React Testing Library for component testing
+- JSDOM environment for DOM simulation
+- Mock functions for API calls and browser APIs
+
+**Running Frontend Tests:**
+```bash
+# Run all Jest tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+**Test Coverage:**
+- Component rendering validation
+- Props handling and defaults
+- Authentication state display
+- User interface interactions
+- CSS class verification
+- Error boundary testing
+
+### Test Configuration Files
+
+- **RSpec**: `spec/rails_helper.rb`, `spec/spec_helper.rb`
+- **Jest**: `jest.config.js`, `spec/javascript/support/setup.js`
+- **Factories**: `spec/factories/users.rb`
+
+### Writing Tests
+
+**Backend Example:**
+```ruby
+RSpec.describe "Api::TestController", type: :request do
+  let(:user) { create(:user) }
+
+  before do
+    post user_session_path, params: {
+      user: { email: user.email, password: user.password }
+    }
+  end
+
+  it "returns pong for ping message" do
+    post "/api/test/ping", params: { message: "ping" }.to_json,
+         headers: { 'Content-Type' => 'application/json' }
+
+    expect(response).to have_http_status(:ok)
+    expect(JSON.parse(response.body)["response"]).to eq("pong")
+  end
+end
+```
+
+**Frontend Example:**
+```javascript
+import { render, screen } from "@testing-library/react";
+import RestaurantReview from "../../../app/javascript/components/RestaurantReview";
+
+test("renders component with user authentication", () => {
+  const mockUser = { email: "test@example.com" };
+
+  render(<RestaurantReview currentUser={mockUser} message="ping" />);
+
+  expect(screen.getByText("Restaurant Review Platform")).toBeInTheDocument();
+  expect(screen.getByText(/Welcome, test@example.com/)).toBeInTheDocument();
+});
+```
 
 ## Troubleshooting
 
@@ -232,6 +313,21 @@ docker-compose down -v
 
 # Rebuild and start
 docker-compose up -d --build
+```
+
+## Running the Full Test Suite
+
+To run all tests and ensure everything is working:
+
+```bash
+# Backend tests
+bundle exec rspec
+
+# Frontend tests
+npm test
+
+# Both with single command (create this script)
+npm run test:all  # runs both RSpec and Jest
 ```
 
 ## License

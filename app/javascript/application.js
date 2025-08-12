@@ -1,1 +1,2 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+// This file is not used since we're using shakapacker
+// All JavaScript loading is handled in packs/application.js
