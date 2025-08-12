@@ -24,7 +24,7 @@
     <%= javascript_pack_tag "application" %>
   </head>
 
-  <body class="bg-gray-50 min-h-screen">
+  <body class="bg-gray-50">
     <nav class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
       <div class="flex items-center justify-between max-w-7xl mx-auto">
         <%= link_to "Rails + React Demo", root_path, class: "text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors" %>
@@ -32,7 +32,7 @@
         <div class="flex items-center space-x-4">
           <% if user_signed_in? %>
             <span class="text-gray-700">Welcome, <%= current_user.email %>!</span>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors" %>
+            <%= link_to "Sign out", destroy_user_session_path, class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors" %>
           <% else %>
             <%= link_to "Sign in", new_user_session_path, class: "text-blue-600 hover:text-blue-800 font-medium transition-colors" %>
             <%= link_to "Sign up", new_user_registration_path, class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors" %>

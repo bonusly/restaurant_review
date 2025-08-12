@@ -52,7 +52,7 @@ const RestaurantReview = ({ currentUser, message }) => {
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Rails + React + API Demo
+          Restaurant Review Platform
         </h1>
         <p className="text-lg text-gray-600">
           Demonstrating full-stack integration with authentication
