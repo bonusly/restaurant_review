@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: foody_development
+  username: foody_user
+  password: password123
+  host: postgres
+  port: 5432
+
+test:
+  <<: *default
+  database: foody_test
+  username: foody_user
+  password: password123
+  host: postgres
+  port: 5432
+
+production:
+  <<: *default
+  database: foody_production
+  username: foody_user
+  password: password123
+  host: postgres
+  port: 5432

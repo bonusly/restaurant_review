@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: foody_postgres
+    environment:
+      POSTGRES_DB: foody_development
+      POSTGRES_USER: foody_user
+      POSTGRES_PASSWORD: password123
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5431:5431"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  foody_api:
+    build: ./foody_api
+    container_name: foody_api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./foody_api:/rails
+      - rails_bundle:/usr/local/bundle
+    depends_on:
+      - postgres
+
+  foody_ui:
+    build: ./foody_ui
+    container_name: foody_ui
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./foody_ui:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+  rails_bundle:
