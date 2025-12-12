@@ -5,7 +5,6 @@ class Review < ApplicationRecord
 
   # Validations
   validates :comment, presence: true, length: { minimum: 10, maximum: 1000 }
-  validates :user_id, uniqueness: { scope: :restaurant_id, message: "can only review a restaurant once" }
 
   # Scopes
   scope :recent, -> { order(created_at: :desc) }

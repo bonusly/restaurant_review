@@ -47,14 +47,6 @@ RSpec.describe CreateReview, type: :command do
         }.to raise_error(ActiveRecord::RecordInvalid, /Comment can't be blank/)
       end
 
-      it 'raises error with duplicate user-restaurant combination' do
-        CreateReview.call(valid_params)
-
-        expect {
-          CreateReview.call(valid_params)
-        }.to raise_error(ActiveRecord::RecordInvalid, /User can only review a restaurant once/)
-      end
-
       it 'raises error with missing user' do
         invalid_params = valid_params.merge(user: nil)
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_16_195913) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_12_185401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -39,7 +39,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_16_195913) do
     t.index ["restaurant_id", "user_id"], name: "index_reviews_on_restaurant_id_and_user_id"
     t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
-    t.index ["user_id", "restaurant_id"], name: "index_reviews_on_user_id_and_restaurant_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
