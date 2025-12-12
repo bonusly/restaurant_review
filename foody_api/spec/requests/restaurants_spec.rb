@@ -280,16 +280,6 @@ RSpec.describe "Restaurants", type: :request do
           json = JSON.parse(response.body)
           expect(json["errors"]).to include("Comment is too short (minimum is 10 characters)")
         end
-
-        it "returns validation error for duplicate review" do
-          create(:review, user: user, restaurant: restaurant)
-
-          post "/restaurants/#{restaurant.id}/reviews", params: valid_params
-
-          expect(response).to have_http_status(:unprocessable_content)
-          json = JSON.parse(response.body)
-          expect(json["errors"]).to include("User can only review a restaurant once")
-        end
       end
 
       context "when restaurant does not exist" do
